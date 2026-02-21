@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['Space Grotesk', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -46,6 +50,13 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        slide: {
+          glow: "hsl(var(--slide-glow))",
+          "glow-secondary": "hsl(var(--slide-glow-secondary))",
+          surface: "hsl(var(--slide-surface))",
+          "surface-hover": "hsl(var(--slide-surface-hover))",
+          number: "hsl(var(--slide-number))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
