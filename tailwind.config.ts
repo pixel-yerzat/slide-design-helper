@@ -57,6 +57,7 @@ export default {
           surface: "hsl(var(--slide-surface))",
           "surface-hover": "hsl(var(--slide-surface-hover))",
           number: "hsl(var(--slide-number))",
+          warm: "hsl(var(--slide-warm))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
