@@ -32,7 +32,7 @@ const TitleSlide = () => {
             </svg>
           </motion.div>
 
-          <h1 className="text-8xl font-bold font-display tracking-tight gradient-text mb-6">
+          <h1 className="text-6xl font-bold font-display tracking-tight gradient-text mb-4">
             SmartDispatch AI
           </h1>
           <div className="flex items-center justify-center gap-3 mb-6">

@@ -22,7 +22,7 @@ const SlideLayout = ({ children, className = "", variant = "default" }: SlideLay
       <div className="absolute inset-0 slide-corner-accent" />
       {/* Decorative orb */}
       <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-primary/[0.03] blur-3xl" />
-      <div className="relative z-10 flex flex-col w-full h-full p-12 md:p-16">
+      <div className="relative z-10 flex flex-col w-full h-full p-8 md:p-10">
         {children}
       </div>
     </div>
