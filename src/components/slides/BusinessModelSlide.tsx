@@ -9,7 +9,7 @@ const items = [
     title: "Лицензия и внедрение",
     price: "60 млн ₸",
     period: "единовременно",
-    desc: "Развертывание системы, интеграции с AD, мессенджерами и корпоративными системами, обучение AI.",
+    desc: "Развертывание, интеграции с AD и мессенджерами, обучение AI.",
     includes: ["Установка On-Premise", "Интеграция AD", "Обучение AI", "Настройка каналов"],
     featured: true,
   },
@@ -18,7 +18,7 @@ const items = [
     title: "Техническая поддержка",
     price: "18 млн ₸",
     period: "в год",
-    desc: "Сопровождение, обновления, развитие AI-моделей и техническая поддержка.",
+    desc: "Сопровождение, обновления и развитие AI-моделей.",
     includes: ["Обновления системы", "Развитие AI", "SLA поддержки", "Мониторинг 24/7"],
     featured: false,
   },
@@ -27,7 +27,7 @@ const items = [
     title: "Безопасность данных",
     price: "On-Premise",
     period: "",
-    desc: "Все данные внутри инфраструктуры клиента, без передачи во внешние облака.",
+    desc: "Данные внутри инфраструктуры клиента.",
     includes: ["Изолированная среда", "Шифрование", "Аудит доступа", "Compliance"],
     featured: false,
   },
@@ -35,76 +35,68 @@ const items = [
 
 const container = { animate: { transition: { staggerChildren: 0.15 } } };
 const itemAnim = {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 25 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const BusinessModelSlide = () => {
   return (
     <SlideLayout variant="warm">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-15"
-        style={{ backgroundImage: `url(${businessBg})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center opacity-15" style={{ backgroundImage: `url(${businessBg})` }} />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/40" />
       <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
 
       <motion.div initial="initial" animate="animate" variants={container} className="relative z-10 flex flex-col h-full">
-        <motion.div variants={itemAnim} className="mb-10 flex items-end gap-6">
+        <motion.div variants={itemAnim} className="mb-6 flex items-end gap-6">
           <div>
-            <div className="number-badge inline-flex items-center px-3 py-1 rounded-full mb-3">
-              <span className="text-primary text-xs font-mono font-medium tracking-widest">06 / PRICING</span>
+            <div className="number-badge inline-flex items-center px-2.5 py-0.5 rounded-full mb-2">
+              <span className="text-primary text-[11px] font-mono font-medium tracking-widest">06 / PRICING</span>
             </div>
-            <h2 className="text-5xl font-bold font-display text-glow">Бизнес-модель</h2>
+            <h2 className="text-4xl font-bold font-display text-glow">Бизнес-модель</h2>
           </div>
-          <div className="h-[2px] flex-1 bg-gradient-to-r from-primary/20 to-transparent mb-3" />
+          <div className="h-[2px] flex-1 bg-gradient-to-r from-primary/20 to-transparent mb-2" />
         </motion.div>
 
-        <div className="grid grid-cols-3 gap-5 flex-1 content-center">
+        <div className="grid grid-cols-3 gap-4 flex-1 content-center">
           {items.map((s, i) => (
             <motion.div
               key={i}
               variants={itemAnim}
-              className={`rounded-2xl p-7 flex flex-col transition-all duration-300 slide-card-hover relative overflow-hidden group ${
+              className={`rounded-xl p-5 flex flex-col transition-all duration-300 slide-card-hover relative overflow-hidden group ${
                 s.featured ? "slide-card-warm" : "slide-card"
               }`}
-              style={s.featured ? { boxShadow: '0 0 40px hsl(35 90% 55% / 0.1)' } : {}}
+              style={s.featured ? { boxShadow: '0 0 30px hsl(35 90% 55% / 0.08)' } : {}}
             >
-              {/* Featured badge */}
               {s.featured && (
-                <div className="absolute top-4 right-4">
-                  <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-1 rounded-full" style={{
+                <div className="absolute top-3 right-3">
+                  <span className="inline-flex items-center gap-1 text-[9px] font-mono px-1.5 py-0.5 rounded-full" style={{
                     background: 'linear-gradient(135deg, hsl(35 90% 55% / 0.15), hsl(35 90% 55% / 0.05))',
                     border: '1px solid hsl(35 90% 55% / 0.3)',
                     color: 'hsl(35 90% 65%)',
                   }}>
-                    <Star className="w-3 h-3" />
-                    TOP
+                    <Star className="w-2.5 h-2.5" /> TOP
                   </span>
                 </div>
               )}
 
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style={{
                 background: s.featured
                   ? 'linear-gradient(135deg, hsl(35 90% 55% / 0.15), hsl(35 90% 55% / 0.05))'
                   : 'linear-gradient(135deg, hsl(185 80% 50% / 0.12), hsl(185 80% 50% / 0.04))',
-                border: s.featured
-                  ? '1px solid hsl(35 90% 55% / 0.2)'
-                  : '1px solid hsl(185 80% 50% / 0.15)',
+                border: s.featured ? '1px solid hsl(35 90% 55% / 0.2)' : '1px solid hsl(185 80% 50% / 0.15)',
               }}>
-                <s.icon className={`w-6 h-6 ${s.featured ? 'text-slide-warm' : 'text-primary'}`} />
+                <s.icon className={`w-5 h-5 ${s.featured ? 'text-slide-warm' : 'text-primary'}`} />
               </div>
-              <h3 className="text-lg font-bold font-display mb-1">{s.title}</h3>
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className={`text-3xl font-bold ${s.featured ? 'gradient-text-warm' : 'gradient-text'}`}>{s.price}</span>
-                {s.period && <span className="text-sm text-muted-foreground">/ {s.period}</span>}
+              <h3 className="text-sm font-bold font-display mb-1">{s.title}</h3>
+              <div className="flex items-baseline gap-1.5 mb-2">
+                <span className={`text-2xl font-bold ${s.featured ? 'gradient-text-warm' : 'gradient-text'}`}>{s.price}</span>
+                {s.period && <span className="text-xs text-muted-foreground">/ {s.period}</span>}
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5">{s.desc}</p>
-              <div className="mt-auto space-y-2">
+              <p className="text-xs text-muted-foreground leading-relaxed mb-3">{s.desc}</p>
+              <div className="mt-auto space-y-1.5">
                 {s.includes.map((inc, j) => (
-                  <div key={j} className="flex items-center gap-2 text-xs text-secondary-foreground">
-                    <Check className={`w-3.5 h-3.5 ${s.featured ? 'text-slide-warm/60' : 'text-primary/60'}`} />
+                  <div key={j} className="flex items-center gap-1.5 text-[11px] text-secondary-foreground">
+                    <Check className={`w-3 h-3 ${s.featured ? 'text-slide-warm/60' : 'text-primary/60'}`} />
                     {inc}
                   </div>
                 ))}
