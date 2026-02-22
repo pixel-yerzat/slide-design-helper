@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import SlideLayout from "./SlideLayout";
 import { Zap, Layers, Bot, MessageSquare, Check } from "lucide-react";
+import solutionBg from "@/assets/solution-bg.jpg";
 
 const solutions = [
   {
@@ -38,7 +39,15 @@ const item = {
 const SolutionSlide = () => {
   return (
     <SlideLayout>
-      <motion.div initial="initial" animate="animate" variants={container} className="flex flex-col h-full">
+      {/* Background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-15"
+        style={{ backgroundImage: `url(${solutionBg})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-transparent to-background/70" />
+
+      <motion.div initial="initial" animate="animate" variants={container} className="relative z-10 flex flex-col h-full">
         <motion.div variants={item} className="mb-10 flex items-end gap-6">
           <div>
             <div className="number-badge inline-flex items-center px-3 py-1 rounded-full mb-3">
@@ -53,18 +62,23 @@ const SolutionSlide = () => {
             <motion.div
               key={i}
               variants={item}
-              className="slide-card rounded-xl p-7 flex flex-col slide-card-hover transition-all duration-300"
+              className="slide-card rounded-xl p-7 flex flex-col slide-card-hover transition-all duration-300 group relative overflow-hidden"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-11 h-11 rounded-lg icon-container flex items-center justify-center">
-                  <s.icon className="w-5 h-5 text-primary" />
+              {/* Animated corner glow */}
+              <div className="absolute top-0 left-0 w-32 h-32 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{
+                background: 'radial-gradient(circle at top left, hsl(185 80% 50% / 0.12), transparent 70%)',
+              }} />
+
+              <div className="relative flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl icon-container flex items-center justify-center box-glow">
+                  <s.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold font-display">{s.title}</h3>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{s.desc}</p>
-              <div className="mt-auto flex flex-wrap gap-2">
+              <p className="relative text-sm text-muted-foreground leading-relaxed mb-4">{s.desc}</p>
+              <div className="relative mt-auto flex flex-wrap gap-2">
                 {s.highlights.map((h, j) => (
-                  <span key={j} className="inline-flex items-center gap-1.5 text-xs text-primary/80 bg-primary/[0.06] px-2.5 py-1 rounded-full">
+                  <span key={j} className="inline-flex items-center gap-1.5 text-xs text-primary/80 bg-primary/[0.08] px-3 py-1.5 rounded-full border border-primary/10">
                     <Check className="w-3 h-3" />
                     {h}
                   </span>
